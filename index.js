@@ -14,9 +14,47 @@ server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-server.get("/api/helth", function (req, res) {
+let users = [
+  {
+    id: 0,
+    email: "test@test.com",
+    password: "test",
+  },
+  {
+    id: 1,
+    email: "test2@test2.com",
+    password: "test2",
+  },
+];
+
+// handlers for request
+const helth = function (req, res) {
   res.send({ helth: "great" });
-});
+};
+
+const getUser = function (req, res) {
+  res.send({ users });
+};
+
+const addUser = function (req, res) {
+  const user = req.body.user;
+  users.push(user);
+  res.send({ users });
+};
+
+const removeUser = function (req, res) {
+  const id = parseInt(req.query.id);
+  users = users.filter((user) => user.id !== id);
+  res.send({ users });
+};
+
+// http method and paths for handlers
+const router = express.Router();
+router.get("/helth", helth);
+router.get("/users", getUser);
+router.post("/users", addUser);
+router.delete("/users", removeUser);
+server.use("/api", router);
 
 const port = process.env.PORT;
 server.listen(port || 3000, function (err) {
