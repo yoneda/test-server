@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const asyncHandler = require("express-async-handler");
 const lodash = require("lodash");
+const path = require("path");
 
 // .envファイルを使用
 env.config();
@@ -13,6 +14,7 @@ server.use(cors());
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use(express.static(path.join(__dirname, "dist")));
 
 let users = [
   {
@@ -55,6 +57,11 @@ router.get("/users", getUser);
 router.post("/users", addUser);
 router.delete("/users", removeUser);
 server.use("/api", router);
+
+// transfer all other request to static files
+server.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 const port = process.env.PORT;
 server.listen(port || 3000, function (err) {
