@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import request from "superagent";
 import styled from "styled-components";
 import EmptyApp from "./EmptyApp";
+import { Reset } from "styled-reset";
 
 const StatusGood = styled.span`
   color: green;
@@ -45,6 +46,7 @@ function Home() {
 
   return (
     <div>
+      <Nav />
       <Box>
         helth:{" "}
         {helth ? <StatusGood>{helth}</StatusGood> : <StatusBad>bad</StatusBad>}
@@ -71,6 +73,7 @@ function About() {
   }, []);
   return (
     <div>
+      <Nav />
       <div>This is about page</div>
       {name && <div>{name}</div>}
     </div>
@@ -80,6 +83,7 @@ function About() {
 function Works() {
   return (
     <div>
+      <Nav />
       <div>This is works page</div>
       <p>Please check my awesome works.</p>
     </div>
@@ -89,6 +93,7 @@ function Works() {
 function Contact() {
   return (
     <div>
+      <Nav />
       <div>This is contact page</div>
       <p>Mail to me.</p>
     </div>
@@ -98,24 +103,26 @@ function Contact() {
 function Nav() {
   return (
     <nav>
-      <Link to="/">Home</Link> | <Link to="about">about</Link> |{" "}
-      <Link to="works">works</Link> | <Link to="contact">contant</Link>
+      <Link to="/">Home</Link> | <Link to="./../about">about</Link> |{" "}
+      <Link to="./../works">works</Link> |{" "}
+      <Link to="./../contact">contant</Link> |{" "}
+      <Link to="./../app">app</Link>
     </nav>
   );
 }
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <Router>
+    <Fragment>
+      <Reset />
+      <Router style={{ height: "100%" }}>
         <Home path="/" />
         <About path="/about" />
         <Works path="/works" />
         <Contact path="/contact" />
         <EmptyApp path="/app" />
       </Router>
-    </div>
+    </Fragment>
   );
 }
 
