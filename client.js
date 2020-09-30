@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import request from "superagent";
 import styled from "styled-components";
+import EmptyApp from "./EmptyApp";
 
 const StatusGood = styled.span`
   color: green;
@@ -112,6 +113,7 @@ function App() {
         <About path="/about" />
         <Works path="/works" />
         <Contact path="/contact" />
+        <EmptyApp path="/app" />
       </Router>
     </div>
   );

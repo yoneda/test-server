@@ -59,9 +59,21 @@ router.delete("/users", removeUser);
 server.use("/api", router);
 
 // transfer all other request to static files
+/*
 server.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+*/
+
+// handle every request over express server
+const Bundler = require("parcel-bundler");
+const file = "index.html";
+const options = {
+  outDir: "./build",
+  cache: true
+};
+const bundler = new Bundler(file, options);
+server.use(bundler.middleware());
 
 const port = process.env.PORT;
 server.listen(port || 3000, function (err) {
