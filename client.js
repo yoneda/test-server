@@ -29,7 +29,7 @@ function Home() {
     const port = process.env.PORT || 3000;
     const url = `http://localhost:${port}/api/helth`;
     request
-      .get(url)
+      .get("/api/helth")
       .then((res) => res.body)
       .then((body) => {
         setHelth(body.helth);
@@ -39,7 +39,7 @@ function Home() {
     const port = process.env.PORT || 3000;
     const url = `http://localhost:${port}/api/users`;
     request
-      .get(url)
+      .get("/api/users")
       .then((res) => res.body)
       .then((body) => {
         setUsers(body.users);
