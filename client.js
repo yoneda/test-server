@@ -37,7 +37,7 @@ function Home() {
   }, []);
   useEffect(() => {
     const port = process.env.PORT || 3000;
-    const url = `http://localhost:${port}/api/helth`;
+    const url = `http://localhost:${port}/api/users`;
     request
       .get(url)
       .then((res) => res.body)
@@ -54,9 +54,8 @@ function Home() {
         {helth ? <StatusGood>{helth}</StatusGood> : <StatusBad>bad</StatusBad>}
       </Box>
       <Box>
-        {users.map((user, index) => (
-          <div key={index}>{user.email}</div>
-        ))}
+        {users &&
+          users.map((user, index) => <div key={index}>{user.email}</div>)}
       </Box>
     </div>
   );
