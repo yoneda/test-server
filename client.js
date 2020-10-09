@@ -26,7 +26,8 @@ function Home() {
   const [helth, setHelth] = useState("");
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    const url = "http://localhost:3000/api/helth";
+    const port = process.env.PORT || 3000;
+    const url = `http://localhost:${port}/api/helth`;
     request
       .get(url)
       .then((res) => res.body)
@@ -35,7 +36,8 @@ function Home() {
       });
   }, []);
   useEffect(() => {
-    const url = "http://localhost:3000/api/users";
+    const port = process.env.PORT || 3000;
+    const url = `http://localhost:${port}/api/helth`;
     request
       .get(url)
       .then((res) => res.body)
@@ -105,8 +107,7 @@ function Nav() {
     <nav>
       <Link to="/">Home</Link> | <Link to="./../about">about</Link> |{" "}
       <Link to="./../works">works</Link> |{" "}
-      <Link to="./../contact">contant</Link> |{" "}
-      <Link to="./../app">app</Link>
+      <Link to="./../contact">contant</Link> | <Link to="./../app">app</Link>
     </nav>
   );
 }
@@ -115,7 +116,7 @@ function App() {
   return (
     <Fragment>
       <Reset />
-      <Router style={{ height: "100%" }}>
+      <Router>
         <Home path="/" />
         <About path="/about" />
         <Works path="/works" />

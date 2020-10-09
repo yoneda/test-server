@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
@@ -6,8 +5,7 @@ import request from "superagent";
 import styled from "styled-components";
 
 const Layout = styled.div`
-  height: 100%;
-  width: 100%;
+  height: 100vh;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -36,13 +34,25 @@ const EditBox = styled.div`
   grid-area: edit;
 `;
 
+const Article = styled.div`
+  margin: 10px;
+  height: 100px;
+  background-color: skyblue;
+`;
 
 function EmptyApp() {
   return (
     <Layout>
       <MenuBox />
       <HeatmapBox />
-      <ListBox />
+      <ListBox>
+        <ul>日記リスト</ul>
+        <li>コンテンツコンテンツ</li>
+        <li>コンテンツコンテンツ</li>
+        <li>コンテンツコンテンツ</li>
+        <li>コンテンツコンテンツ</li>
+        <Article>article</Article>
+      </ListBox>
       <EditBox />
     </Layout>
   );
