@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
 import request from "superagent";
 import styled from "styled-components";
-import EmptyApp from "./EmptyApp";
 import { Reset } from "styled-reset";
+import EmptyApp from "./EmptyApp";
+import StyleTest from "./StyleTest";
 
 const StatusGood = styled.span`
   color: green;
@@ -57,6 +58,7 @@ function Home() {
         {users &&
           users.map((user, index) => <div key={index}>{user.email}</div>)}
       </Box>
+      <StyleTest />
     </div>
   );
 }
