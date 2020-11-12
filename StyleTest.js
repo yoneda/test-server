@@ -7,6 +7,10 @@ const Title = styled.h1`
   color: palevioletred;
 `;
 
+const GreenTitle = styled(Title)`
+  color: forestgreen;
+`;
+
 const Wrapper = styled.section`
   padding: 4em;
   background: papayawhip;
@@ -22,6 +26,8 @@ function StyleTest() {
     <div>
       <Wrapper>
         <Title>hello</Title>
+        <GreenTitle>hi, I'm yoneda</GreenTitle>
+        <GreenTitle as="p">my hobby is tennis.</GreenTitle>
       </Wrapper>
       <Button primary>button1</Button>
       <Button>button2</Button>
