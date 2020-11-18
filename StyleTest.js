@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -21,6 +21,22 @@ const Button = styled.button`
   color: ${(props) => (props.primary ? "palevioletred" : "black")};
 `;
 
+const rotate = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`;
+
+const Rotate = styled.div`
+  width: 100px;
+  height: 100px;
+  background: papayawhip;
+  animation: ${rotate} 2s linear infinite;
+`;
+
 function StyleTest() {
   return (
     <div>
@@ -31,6 +47,7 @@ function StyleTest() {
       </Wrapper>
       <Button primary>button1</Button>
       <Button>button2</Button>
+      <Rotate />
     </div>
   );
 }
