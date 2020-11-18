@@ -1,23 +1,14 @@
-import React, { Fragment, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { Router, Link } from "@reach/router";
-import request from "superagent";
-import styled from "styled-components";
-import { Reset } from "styled-reset";
-import EmptyApp from "./EmptyApp";
-import StyleTest from "./StyleTest";
+import React, { useState } from "react";
 import {
   action,
-  computed,
   createStore,
   StoreProvider,
   useStoreState,
   useStoreActions,
-  useStore,
 } from "easy-peasy";
 
 const store = createStore({
-  tasks: ["aaa", "bbb", "ccc", "ddd", "eee"],
+  tasks: ["aaa", "bbb", "ccc"],
   add: action((state, payload) => {
     state.tasks.push(payload);
   }),

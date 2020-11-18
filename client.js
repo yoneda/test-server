@@ -6,7 +6,8 @@ import styled from "styled-components";
 import { Reset } from "styled-reset";
 import EmptyApp from "./EmptyApp";
 import StyleTest from "./StyleTest";
-import TodoContext from "./TodoContext";
+import Todo from "./Todo";
+import Todo2 from "./Todo2";
 
 const StatusGood = styled.span`
   color: green;
@@ -109,7 +110,9 @@ function Nav() {
     <nav>
       <Link to="/">Home</Link> | <Link to="./../about">about</Link> |{" "}
       <Link to="./../works">works</Link> |{" "}
-      <Link to="./../contact">contant</Link> | <Link to="./../app">app</Link> | <Link to="./../todo">todo</Link>
+      <Link to="./../contact">contant</Link> | <Link to="./../app">app</Link> |{" "}
+      <Link to="./../todo">todo(easy-peasy)</Link> |{" "}
+      <Link to="./../todo2">todo(react's context)</Link>
     </nav>
   );
 }
@@ -124,7 +127,8 @@ function App() {
         <Works path="/works" />
         <Contact path="/contact" />
         <EmptyApp path="/app" />
-        <TodoContext path="/todo" />
+        <Todo path="/todo" />
+        <Todo2 path="/todo2" />
       </Router>
     </Fragment>
   );
