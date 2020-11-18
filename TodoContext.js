@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext} from "react";
 
 const TaskContext = createContext({
   tasks: ["aaa", "bbb", "ccc"],
@@ -6,8 +6,8 @@ const TaskContext = createContext({
   remove: () => {},
 });
 
-function Todo(props) {
-  const { tasks, add, remove } = props;
+function Todo() {
+  const { tasks, add, remove } = useContext(TaskContext);
   const [text, setText] = useState("");
   const onClick = () => {
     add(text);
@@ -49,17 +49,7 @@ export default function () {
   };
   return (
     <TaskContext.Provider value={{ tasks, add, remove }}>
-      <TaskContext.Consumer>
-        {({ tasks: consTasks, add: consAdd, remove: consRemove }) => (
-          <Todo
-            {...{
-              tasks: consTasks,
-              add: consAdd,
-              remove: consRemove,
-            }}
-          />
-        )}
-      </TaskContext.Consumer>
+      <Todo />
     </TaskContext.Provider>
   );
 }
