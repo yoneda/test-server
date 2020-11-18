@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Reset } from "styled-reset";
 import EmptyApp from "./EmptyApp";
 import StyleTest from "./StyleTest";
-import Todo from "./Todo";
+import TodoContext from "./TodoContext";
 
 const StatusGood = styled.span`
   color: green;
@@ -124,7 +124,7 @@ function App() {
         <Works path="/works" />
         <Contact path="/contact" />
         <EmptyApp path="/app" />
-        <Todo path="/todo" />
+        <TodoContext path="/todo" />
       </Router>
     </Fragment>
   );
