@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Reset } from "styled-reset";
 import EmptyApp from "./EmptyApp";
 import StyleTest from "./StyleTest";
+import Todo from "./Todo";
 
 const StatusGood = styled.span`
   color: green;
@@ -108,7 +109,7 @@ function Nav() {
     <nav>
       <Link to="/">Home</Link> | <Link to="./../about">about</Link> |{" "}
       <Link to="./../works">works</Link> |{" "}
-      <Link to="./../contact">contant</Link> | <Link to="./../app">app</Link>
+      <Link to="./../contact">contant</Link> | <Link to="./../app">app</Link> | <Link to="./../todo">todo</Link>
     </nav>
   );
 }
@@ -123,6 +124,7 @@ function App() {
         <Works path="/works" />
         <Contact path="/contact" />
         <EmptyApp path="/app" />
+        <Todo path="/todo" />
       </Router>
     </Fragment>
   );
